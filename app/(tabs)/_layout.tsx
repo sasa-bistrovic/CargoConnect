@@ -1,43 +1,67 @@
-import React from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
-import { Pressable } from "react-native";
-
-import Colors from "@/constants/colors";
-
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import React from 'react';
+import { Tabs } from 'expo-router';
+import { 
+  Package, 
+  Map, 
+  User
+} from 'lucide-react-native';
+import { colors } from '@/constants/colors';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.light.tint,
-        headerShown: true,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.gray,
+        tabBarStyle: {
+          backgroundColor: colors.white,
+          borderTopColor: colors.border,
+          height: 60,
+          paddingBottom: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '500',
+        },
+        headerStyle: {
+          backgroundColor: colors.white,
+        },
+        headerTitleStyle: {
+          fontWeight: '600',
+          fontSize: 18,
+        },
+        headerShadowVisible: false,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors.light.text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          title: "Orders",
+          tabBarLabel: "Orders",
+          tabBarIcon: ({ color, size }) => (
+            <Package size={size} color={color} />
+          ),
+        }}
+      />
+      
+      <Tabs.Screen
+        name="tracking"
+        options={{
+          title: "Tracking",
+          tabBarLabel: "Tracking",
+          tabBarIcon: ({ color, size }) => (
+            <Map size={size} color={color} />
+          ),
+        }}
+      />
+      
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarLabel: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <User size={size} color={color} />
           ),
         }}
       />
