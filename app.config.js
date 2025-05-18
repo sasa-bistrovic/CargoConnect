@@ -1,0 +1,36 @@
+export default {
+  name: "LogiTrack",
+  slug: "logitrack",
+  version: "1.0.0",
+  orientation: "portrait",
+  icon: "./assets/images/icon.png",
+  scheme: "logitrack",
+  userInterfaceStyle: "automatic",
+  splash: {
+    image: "./assets/images/splash-icon.png",
+    resizeMode: "contain",
+    backgroundColor: "#ffffff"
+  },
+  web: {
+    favicon: "./assets/images/favicon.png",
+    bundler: "metro",
+    output: "static",
+    name: "LogiTrack - Efficient Logistics Management Platform",
+    description: "LogiTrack connects transporters with businesses needing shipping services. Track shipments in real-time, manage your logistics operations, and optimize your supply chain with our comprehensive platform. Whether you're shipping goods or providing transport services, LogiTrack streamlines the entire process.",
+    themeColor: "#3366FF",
+    lang: "en"
+  },
+  ios: {
+    supportsTablet: true
+  },
+  android: {
+    adaptiveIcon: {
+      foregroundImage: "./assets/images/adaptive-icon.png",
+      backgroundColor: "#ffffff"
+    }
+  },
+  plugins: ["expo-router"],
+  experiments: {
+    typedRoutes: true
+  }
+};
